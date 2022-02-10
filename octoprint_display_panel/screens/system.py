@@ -28,10 +28,10 @@ class SystemInfoScreen(base.MicroPanelScreenBase):
 
         c = self.get_canvas()
         # c.text_centered(0, self.stats['ip'])
-        c.text((0, 9), f'L: {load[0]:.2f}, {load[1]:.2f}, {load[2]:.2f}')
-        c.text((0, 18), (f'M: {mem.used//MB}/{mem.total//MB} MB'
+        c.text((0, 0), f'L: {load[0]:.2f}, {load[1]:.2f}, {load[2]:.2f}')
+        c.text((0, 11), (f'M: {mem.used//MB}/{mem.total//MB} MB'
                          f' {mem.percent}%'))
-        c.text((0, 27), (f'D: {disk.used//GB}/{disk.total//GB} GB'
+        c.text((0, 21), (f'D: {disk.used//GB}/{disk.total//GB} GB'
                          f' {disk_percent:.1f}%'))
         return c.image
 
