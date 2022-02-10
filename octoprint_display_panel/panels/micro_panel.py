@@ -18,12 +18,12 @@ class MicroPanel:
     """Interface to the standard I2C and GPIO-driven Micro Panel.
     """
     width = 128
-    height = 64
-    
+    height = 32
+
     def __init__(self, button_callback):
         self.button_event_callback = button_callback
         self.gpio_pinset = set()
-        
+
     def setup(self, settings):
         """Apply settings from OctoPrint's SettingsPlugin mixin to
         configure the panel.
@@ -34,7 +34,7 @@ class MicroPanel:
             for p in ['cancel', 'mode', 'pause', 'play']
         }
         self.debounce_time = settings.get_int(['debounce'], merged=True)
-    
+
         # set up display
         self.i2c = busio.I2C(SCL, SDA)
         self.disp = adafruit_ssd1306.SSD1306_I2C(
@@ -85,7 +85,7 @@ class MicroPanel:
                 continue
             GPIO.remove_event_detect(gpio_pin)
             GPIO.cleanup(gpio_pin)
-            
+
     def fill(self, v):
         """Fill the screen with the specified color.
         """
